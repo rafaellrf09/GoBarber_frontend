@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from "react-redux";
-import { BrowserRouter } from 'react-router-dom';
+import {  Router } from 'react-router-dom';
 
 import './config/ReactotronConfig';
 
@@ -8,16 +8,17 @@ import Routes from "~/routes"
 import GlobalStyle from '~/styles/global'
 
 import store from './store'
+import history from '~/services/history';
 
 
 function App() {
   return (
     <div className="App">
       < Provider store={store}>
-        <BrowserRouter>
+        <Router history= {history}>
           <Routes />
           <GlobalStyle />
-        </BrowserRouter>
+        </Router>
       </Provider>
     </div>
   );

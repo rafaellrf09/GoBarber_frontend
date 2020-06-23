@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform'
 import * as Yup from 'yup';
 
+import { useDispatch } from 'react-redux';
+
+import { signInRequest } from '~/store/modules/auth/actions';
+
 
 const schema = Yup.object().shape({
   email: Yup.string().email('Insira um e-mail válido').required('O e-mail é obrigatório'),
@@ -11,8 +15,10 @@ const schema = Yup.object().shape({
 });
 
 function SingIn() {
-  function handleSubmit(data) {
-    console.tron.log(data);
+  const dispath = useDispatch();
+
+  function handleSubmit({ email, password }) {
+    dispath(signInRequest(email, password));
   }
 
   return(
