@@ -1,6 +1,7 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import api from '~/services/api'
+
 
 function Dashbord() {
   return <h1>Dashbord</h1>;
