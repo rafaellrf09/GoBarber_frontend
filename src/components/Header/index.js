@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { useSelector } from 'react-redux'
 import { Container, Content, Profile } from './styles';
-
 import Notifications from '~/components/Notifications'
 
 import logo from '~/assets/logoRoxa.svg'
 
 function Header() {
+  const profile = useSelector(state => state.user.profile)
   return(
     <Container>
       <Content>
@@ -19,12 +19,10 @@ function Header() {
           <Notifications />
           <Profile>
             <div>
-              <strong>
-                name
-              </strong>
+              <strong>{profile.name}</strong>
               <Link to="/profile">Profile</Link>
             </div>
-            <img src="https://api.adorable.io/avatars/50/abott@adorable.png" alt="Avatar"/>
+            <img src={ profile.avatar.url || "https://api.adorable.io/avatars/50/abott@adorable.png" } alt="Avatar"/>
           </Profile>
         </aside>
       </Content>
